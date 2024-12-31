@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter_test/flutter_test.dart';
-
 import 'package:stream_disposer/stream_disposer.dart';
+import 'package:test/test.dart';
 
 class MockObject with StreamDisposer {
   void onStreamListen(void Function(int) onData) {
@@ -22,6 +21,5 @@ void main() {
     });
 
     mockObject.dispose();
-
   });
 }
