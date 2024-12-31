@@ -28,11 +28,12 @@ import 'dart:async';
 import 'package:stream_disposer/stream_disposer.dart';
 
 class MyStreamHandler with StreamDisposer {
-  void startListening(Stream<int> stream) {
-    var subscription = stream.listen((data) {
+  ...
+  
+  void startListening() {
+    addSubscription(stream.listen((data) {
       // Handle the incoming data
-    });
-    addSubscription(subscription);
+    }));
   }
 
   @override
