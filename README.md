@@ -1,39 +1,61 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# StreamDisposer
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+`StreamDisposer` is a Dart mixin that simplifies the management of multiple `StreamSubscription` instances. It provides methods to add subscriptions and ensures that all are properly canceled when no longer needed, preventing memory leaks and unintended behaviors.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Add individual or multiple `StreamSubscription` instances for centralized management.
+- Automatically cancel all managed subscriptions with a single `dispose` method.
+- Designed for easy integration into existing Dart classes.
 
-## Getting started
+## Getting Started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+To use `StreamDisposer` in your project, add it as a dependency in your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  stream_disposer: ^1.0.0
+```
+
+Then, run dart pub get to fetch the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Here’s how to use StreamDisposer in your Dart classes:
 
 ```dart
-const like = 'sample';
+import 'dart:async';
+import 'package:stream_disposer/stream_disposer.dart';
+
+class MyStreamHandler with StreamDisposer {
+  void startListening(Stream<int> stream) {
+    var subscription = stream.listen((data) {
+      // Handle the incoming data
+    });
+    addSubscription(subscription);
+  }
+
+  @override
+  void dispose() {
+    // Perform any additional cleanup if necessary
+    super.dispose(); // Ensure all subscriptions are canceled
+  }
+}
 ```
 
-## Additional information
+### In this example:
+	•	MyStreamHandler uses the StreamDisposer mixin to manage its stream subscriptions.
+	•	The startListening method adds a subscription to the internal list for management.
+	•	The dispose method cancels all managed subscriptions, ensuring proper resource cleanup.
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## Example
+
+For a complete example, refer to the example/ directory in the repository.
+
+## Contributing
+
+Contributions are welcome! Please see the contributing guidelines for more information.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
