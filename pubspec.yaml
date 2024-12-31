@@ -1,7 +1,7 @@
 name: stream_disposer
-description: "A new Flutter package project."
+description: "StreamDisposer"
 version: 0.0.1
-homepage:
+homepage: https://github.com/ssk-flutter/stream_disposer
 
 environment:
   sdk: ^3.6.0
