@@ -22,9 +22,9 @@ class MyStreamHandler with StreamDisposer {
   }
 
   @override
-  void dispose() {
+  void clear() {
     // Perform any additional cleanup if necessary
-    super.dispose(); // Ensure all subscriptions are canceled
+    super.clear(); // Ensure all subscriptions are canceled
   }
 }
 
@@ -37,6 +37,6 @@ void main() {
 
   // Wait for 5 seconds
   Future.delayed(const Duration(seconds: 5), () {
-    myStreamHandler.dispose();
+    myStreamHandler.clear();
   });
 }

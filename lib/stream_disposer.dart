@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 /// [StreamSubscription] instances.
 ///
 /// This mixin allows you to add subscriptions to a list and ensures that all
-/// subscriptions are canceled when [dispose] is called, preventing memory leaks
+/// subscriptions are canceled when [clear] is called, preventing memory leaks
 /// and unintended behaviors.
 mixin class StreamDisposer {
   /// A list that holds all active [StreamSubscription] instances.
@@ -14,7 +14,7 @@ mixin class StreamDisposer {
   /// Adds a [StreamSubscription] to the internal list for management.
   ///
   /// This method registers a single subscription to be managed. The subscription
-  /// will be canceled when [dispose] is invoked.
+  /// will be canceled when [clear] is invoked.
   ///
   /// ```dart
   /// class MyClass with StreamDisposer {
@@ -38,7 +38,7 @@ mixin class StreamDisposer {
   /// Adds multiple [StreamSubscription] instances to the internal list for management.
   ///
   /// This method registers multiple subscriptions to be managed. All subscriptions
-  /// will be canceled when [dispose] is invoked.
+  /// will be canceled when [clear] is invoked.
   ///
   /// ```dart
   /// class MyClass with StreamDisposer {
@@ -63,19 +63,18 @@ mixin class StreamDisposer {
   ///
   /// This method ensures that all subscriptions added via [addSubscription] or
   /// [addSubscriptions] are canceled to prevent memory leaks. Subclasses that
-  /// override [dispose] must call `super.dispose()` to ensure proper cancellation.
+  /// override [clear] must call `super.dispose()` to ensure proper cancellation.
   ///
   /// ```dart
   /// class MyClass with StreamDisposer {
-  ///   @override
   ///   void dispose() {
   ///     // Perform additional cleanup if necessary
-  ///     super.dispose();
+  ///     clear();
   ///   }
   /// }
   /// ```
   @mustCallSuper
-  void dispose() {
+  void clear() {
     for (var subscription in _subscriptions) {
       subscription.cancel();
     }

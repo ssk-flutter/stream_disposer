@@ -20,6 +20,6 @@ void main() {
       print('count: $count');
     });
 
-    mockObject.dispose();
+    mockObject.clear();
   });
 }

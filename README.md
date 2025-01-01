@@ -36,10 +36,9 @@ class MyStreamHandler with StreamDisposer {
     }));
   }
 
-  @override
   void dispose() {
     // Perform any additional cleanup if necessary
-    super.dispose(); // Ensure all subscriptions are canceled
+    clear(); // Ensure all subscriptions are canceled
   }
 }
 ```
