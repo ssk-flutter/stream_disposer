@@ -75,9 +75,11 @@ mixin class StreamDisposer {
   /// ```
   @mustCallSuper
   void clear() {
-    for (var subscription in _subscriptions) {
+    final subscriptions = List.from(_subscriptions);
+    _subscriptions.clear();
+
+    for (var subscription in subscriptions) {
       subscription.cancel();
     }
-    _subscriptions.clear();
   }
 }
