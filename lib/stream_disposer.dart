@@ -11,6 +11,10 @@ mixin class StreamDisposer {
   /// A list that holds all active [StreamSubscription] instances.
   final List<StreamSubscription> _subscriptions = [];
 
+  /// Returns the number of active [StreamSubscription] instances.
+  @visibleForTesting
+  int get subscriptionCount => _subscriptions.length;
+
   /// Adds a [StreamSubscription] to the internal list for management.
   ///
   /// This method registers a single subscription to be managed. The subscription

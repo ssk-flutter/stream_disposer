@@ -5,7 +5,7 @@
 ## Features
 
 - Add individual or multiple `StreamSubscription` instances for centralized management.
-- Automatically cancel all managed subscriptions with a single `dispose` method.
+- Automatically cancel all managed subscriptions with a single `clear` method.
 - Designed for easy integration into existing Dart classes.
 
 ## Getting Started
