@@ -1,6 +1,6 @@
 name: stream_disposer
 description: "StreamDisposer"
-version: 0.0.8
+version: 0.0.9
 repository: https://github.com/ssk-flutter/stream_disposer
 issue_tracker: https://github.com/ssk-flutter/stream_disposer/issues
 homepage: https://github.com/ssk-flutter/stream_disposer
@@ -12,7 +12,7 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  meta:
+  meta: ^1.17.0
 
 dev_dependencies:
   test: ^1.16.0
